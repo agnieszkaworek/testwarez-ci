@@ -50,7 +50,7 @@ jobs:
                 report.html
                 assets
 
-      - name: Notify Slack - Build Status
+      - name: Notify Slack - Build Statuses
         if: always()
         uses: rtCamp/action-slack-notify@v2
         env:
