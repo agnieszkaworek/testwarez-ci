@@ -18,7 +18,7 @@ jobs:
         with:
           python-version: 3.13.2
           
-      - name: Run Tests
+      - name: Run Test
         run: |
              chmod +x -R ${{ github.workspace }}
              pip install --upgrade pip
