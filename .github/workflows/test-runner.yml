@@ -18,10 +18,16 @@ jobs:
         with:
           python-version: 3.13.2
           
-      - name: Run Test
+      - name: Run Tests
         run: |
              chmod +x -R ${{ github.workspace }}
              pip install --upgrade pip
              pip install -r requirements.txt
              export PYTHONPATH=${PYTHONPATH}:${{ github.workspace }}
-             pytest -s tests/part_01/test_users.py
+             pytest -s tests/part_01/test_users.py --junitxml=results.xml
+
+      - name: Create Test Summary
+        uses: test-summary/action@dist
+        if: success() || failure()
+        with:
+          paths: results.xml
